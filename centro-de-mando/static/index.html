@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuadros de mando · Agile Institute</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e3a4f'/%3E%3Cpath d='M8 22V14M14 22V9M20 22v-6M26 22V12' stroke='%23f5c518' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main id="login-view" class="login" hidden>
+    <div class="login-card">
+      <div class="logo logo-lg">Agile Institute</div>
+      <h1>Cuadros de mando por dimensión</h1>
+      <p class="muted">Persona · Equipo · Liderazgo · Organización · IA transversal · Persona + IA · Líder + IA</p>
+      <p class="login-note">Acceso de demostración con datos DEMO ficticios. Cada rol ve solo los cuadros y el nivel de detalle que autoriza.</p>
+      <ul id="accounts" class="accounts"></ul>
+      <p id="login-error" class="error" role="alert" hidden></p>
+    </div>
+  </main>
+
+  <div id="app-view" class="app" hidden>
+    <aside class="sidebar">
+      <div class="logo">Agile Institute</div>
+      <nav aria-label="Cuadros de mando"><ul id="nav" class="nav"></ul></nav>
+      <div class="side-user">
+        <strong id="user-role"></strong>
+        <span id="user-name"></span>
+        <button id="logout" class="btn ghost on-dark" type="button">Salir</button>
+      </div>
+    </aside>
+
+    <main class="content" id="content" tabindex="-1">
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <div id="tooltip" class="tooltip" role="status" hidden></div>
+
+  <dialog id="export-dialog" class="dialog" aria-labelledby="export-title">
+    <form method="dialog" id="export-form">
+      <h2 id="export-title">Descargar Excel</h2>
+      <p class="muted">El libro aplica los filtros que tienes en pantalla.</p>
+      <ul id="export-contents" class="check-list"></ul>
+      <div id="export-admin" hidden>
+        <label class="check"><input type="checkbox" id="export-data"> Incluir datos ítem a ítem (formato Datos_Txx · exportación administrativa)</label>
+        <label class="field" id="export-reason-wrap" hidden>Motivo (mínimo 10 caracteres)
+          <input type="text" id="export-reason" maxlength="300" placeholder="p. ej. verificación manual del cálculo">
+        </label>
+      </div>
+      <p id="export-error" class="error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel" type="submit">Cancelar</button>
+        <button class="btn primary" id="export-go" type="button">Descargar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/static/charts.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
