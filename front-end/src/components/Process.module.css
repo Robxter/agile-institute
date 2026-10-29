@@ -1,0 +1,88 @@
+.section {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 4fr);
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.title {
+  font-size: clamp(1.4rem, 1.1rem + 0.9vw, 1.75rem);
+  font-weight: 800;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 96px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--sky);
+  transition: background 0.2s var(--ease);
+}
+.step:hover {
+  background: var(--sky-strong);
+}
+/* Conector entre pasos */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background: var(--sky-strong);
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+}
+
+.step h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+.step p {
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 1080px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 860px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .step::after {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}

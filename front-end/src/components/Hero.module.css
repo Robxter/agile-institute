@@ -1,0 +1,144 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  padding-top: clamp(24px, 4vw, 48px);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  padding-top: 4px;
+}
+
+.title {
+  font-size: var(--fs-display);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  animation: rise 0.8s var(--ease) both;
+}
+
+.underline {
+  background: none;
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.08em;
+  text-decoration-skip-ink: none;
+}
+
+.accent {
+  color: var(--teal);
+}
+
+.lead {
+  max-width: 34em;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--muted);
+  animation: rise 0.8s 0.1s var(--ease) both;
+}
+
+.copy > button {
+  margin-top: 4px;
+  animation: rise 0.8s 0.2s var(--ease) both;
+}
+
+/* Cuadro de mando */
+.panel {
+  position: relative;
+  padding: 26px 24px 22px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  animation: rise 0.9s 0.15s var(--ease) both;
+}
+
+.panelTitle {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--sky);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+.item:hover {
+  background: var(--sky-strong);
+  transform: translateX(3px);
+}
+.chevron {
+  margin-left: auto;
+  transition: transform 0.2s var(--ease);
+}
+.item:hover .chevron {
+  transform: translateX(3px);
+}
+
+.panelFoot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+.note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.presenter {
+  width: 170px;
+  flex-shrink: 0;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    max-width: 560px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .copy > button {
+    width: 100%;
+  }
+  .presenter {
+    width: 128px;
+  }
+}

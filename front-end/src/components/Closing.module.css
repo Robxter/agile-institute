@@ -1,0 +1,36 @@
+.noticeWrap {
+  margin-top: 36px;
+}
+
+.notice {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.notice strong {
+  color: var(--ink);
+}
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--blue);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.footer {
+  padding-block: 40px 48px;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
