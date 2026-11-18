@@ -35,7 +35,8 @@ describe('BFF', () => {
     });
     await new Promise<void>((r) => upstream.listen(0, '127.0.0.1', r));
     const previous = process.env.CDM_API_URL;
-    process.env.CDM_API_URL = `http://127.0.0.1:${(upstream.address() as AddressInfo).port}`;
+    // Forma "host:puerto" sin esquema, como la entrega render.yaml (fromService … hostport).
+    process.env.CDM_API_URL = `127.0.0.1:${(upstream.address() as AddressInfo).port}`;
     try {
       const page = await fetch(`${base}/app`);
       expect(await page.text()).toBe('ok');

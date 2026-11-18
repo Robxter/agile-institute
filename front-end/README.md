@@ -34,6 +34,13 @@ Para que **Acceder**, `/app` y el resto de `/api` funcionen, arranca también el
 (`python -m uvicorn app.main:app --port 8765` en `../centro-de-mando`). Si no está en marcha, la landing funciona igual
 y el BFF responde `502` a las rutas que delega.
 
+## Despliegue en Render
+
+`../render.yaml` (Blueprint) crea dos servicios en Frankfurt: **agile-landing** (web pública, Node: compila la landing
+y arranca este BFF) y **centro-de-mando** (servicio privado, Python/FastAPI). El BFF recibe `CDM_API_URL` como
+`host:puerto` de la red privada y escucha en el `PORT` que asigna Render. En Render: *New → Blueprint*, elige este
+repositorio y confirma. Los datos de la demo son efímeros (ver comentarios de `render.yaml`).
+
 ## Variables
 
 | Variable | Por defecto | Uso |

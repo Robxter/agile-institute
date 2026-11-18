@@ -15,9 +15,14 @@ import { fileURLToPath } from 'node:url';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
 const DATA_DIR = join(ROOT, 'data');
-const PORT = Number(process.env.BFF_PORT ?? 5174);
-// Se lee en cada petición para poder reconfigurarlo en pruebas.
-const cdmUrl = () => (process.env.CDM_API_URL ?? 'http://127.0.0.1:8765').replace(/\/$/, '');
+// Render asigna PORT; en local se usa BFF_PORT.
+const PORT = Number(process.env.PORT ?? process.env.BFF_PORT ?? 5174);
+// Se lee en cada petición para poder reconfigurarlo en pruebas. Admite "host:puerto" sin esquema, que es lo que
+// entrega render.yaml (fromService … property: hostport) para la red privada.
+const cdmUrl = () => {
+  const raw = (process.env.CDM_API_URL ?? 'http://127.0.0.1:8765').replace(/\/$/, '');
+  return /^https?:\/\//.test(raw) ? raw : `http://${raw}`;
+};
 const MAX_BODY = 16 * 1024;
 
 const MIME = {

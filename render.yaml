@@ -1,0 +1,53 @@
+# Blueprint de Render · Agile Institute
+#
+#   Internet ──► agile-landing (web, Node)  ──red privada──►  centro-de-mando (pserv, Python/FastAPI)
+#                 /            landing React (dist/)
+#                 /app         interfaz del centro de mando  ─┐
+#                 /static/*    sus recursos                   ├─► proxy al servicio privado
+#                 /api/*       su API                         ┘
+#                 /api/pilot-requests, /api/health  (propios del BFF)
+#
+# Un único origen público: la cookie de sesión del centro de mando (SameSite=strict) funciona sin CORS y la API no
+# queda expuesta por separado. Render solo redespliega cada servicio cuando cambian archivos de su rootDir.
+#
+# Datos: el sistema de archivos de Render es efímero. centro-de-mando arranca con data/centro_mando.db del repositorio
+# (datos DEMO ficticios); distribuciones, planes, auditoría y sesiones se pierden en cada despliegue o reinicio, igual
+# que las solicitudes de piloto que guarda el BFF en front-end/data/. Para conservarlos, añade un disco (plan de pago)
+# y apunta CDM_DB_PATH a él.
+
+services:
+  - type: web
+    name: agile-landing
+    runtime: node
+    region: frankfurt
+    plan: free # se suspende tras 15 min sin tráfico; "starter" lo mantiene activo
+    rootDir: front-end
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.11.0
+      - key: CDM_API_URL # "host:puerto" del servicio privado; el BFF añade http://
+        fromService:
+          type: pserv
+          name: centro-de-mando
+          property: hostport
+
+  - type: pserv
+    name: centro-de-mando
+    runtime: python
+    region: frankfurt # misma región: obligatorio para la red privada
+    plan: starter # los servicios privados no tienen plan gratuito
+    rootDir: centro-de-mando
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      # Acceso de demostración: cualquiera que abra /app puede entrar con cualquier rol (incluida administración).
+      # Solo es aceptable con los datos DEMO ficticios; pon "0" antes de cargar datos reales.
+      - key: CDM_DEMO_LOGIN
+        value: "1"
