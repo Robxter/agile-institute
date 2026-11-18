@@ -21,8 +21,8 @@ export class ApiError extends Error {
   }
 }
 
-/** URL del centro de mando (FastAPI) para "Acceder" y los accesos a cada cuadro. */
-export const APP_URL: string = import.meta.env.VITE_APP_URL ?? '/';
+/** Centro de mando servido por el BFF; cada cuadro se abre con `${APP_URL}#/<clave>`. */
+export const APP_URL: string = import.meta.env.VITE_APP_URL ?? '/app';
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;

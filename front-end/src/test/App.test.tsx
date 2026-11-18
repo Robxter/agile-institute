@@ -10,7 +10,9 @@ describe('Landing', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/responsable de la\s*IA/);
     const panel = screen.getByRole('complementary', { name: 'Tu cuadro de mando' });
-    expect(within(panel).getAllByRole('link')).toHaveLength(dimensions.length);
+    expect(within(panel).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual(
+      dimensions.map((d) => `/app#/${d.key}`),
+    );
     for (const role of roles.items) expect(screen.getByRole('heading', { name: role.title })).toBeInTheDocument();
     expect(screen.getByRole('note')).toHaveTextContent('Instrumento en fase piloto.');
   });

@@ -10,8 +10,12 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: {
       port: 5173,
-      // Todo /api pasa por el BFF, que a su vez delega en el centro de mando (FastAPI).
-      proxy: { '/api': `http://127.0.0.1:${bffPort}` },
+      // /api, /app y /static pasan por el BFF, que a su vez delega en el centro de mando (FastAPI).
+      proxy: {
+        '/api': `http://127.0.0.1:${bffPort}`,
+        '/static': `http://127.0.0.1:${bffPort}`,
+        '^/app/?$': `http://127.0.0.1:${bffPort}`,
+      },
     },
     build: { outDir: 'dist', sourcemap: true },
     test: {

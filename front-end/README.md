@@ -4,12 +4,16 @@ Landing page pública basada en `propuesta front-end.png`. Es una SPA en **React
 **BFF Node** (backend-for-frontend) que la conecta con el centro de mando FastAPI (`../centro-de-mando`).
 
 ```
-Navegador ──► Vite (dev :5173) ──/api──► BFF Node (:5174) ──┬─► /api/pilot-requests  (propio: valida y guarda)
-                                                            ├─► /api/health
-                                                            └─► resto de /api/*  ──► centro de mando FastAPI (:8765)
+Navegador ──► Vite (dev :5173) ──/api, /app, /static──► BFF Node (:5174) ──┬─► /api/pilot-requests  (propio: valida y guarda)
+                                                                           ├─► /api/health
+                                                                           └─► /app → /, /static/*, resto de /api/*
+                                                                                 ──► centro de mando FastAPI (:8765)
 ```
 
-En producción el BFF también sirve `dist/`, así que todo sale por un único puerto.
+En producción el BFF también sirve `dist/`, así que todo sale por un único puerto. La landing y el centro de mando
+comparten origen: la cookie de sesión del centro de mando (`SameSite=strict`) funciona sin CORS, **Acceder** abre
+`/app` y cada entrada de "Tu cuadro de mando" abre su cuadro (`/app#/persona`, `/app#/equipo`…). Tras el acceso de
+demostración se conserva el cuadro pedido; si el rol no lo tiene autorizado, el centro de mando vuelve a "Inicio".
 
 ## Arranque
 
@@ -26,7 +30,7 @@ npm test                    # Vitest: UI (jsdom) + BFF (node)
 npm run typecheck
 ```
 
-Para que **Acceder** y el resto de `/api` funcionen, arranca también el centro de mando
+Para que **Acceder**, `/app` y el resto de `/api` funcionen, arranca también el centro de mando
 (`python -m uvicorn app.main:app --port 8765` en `../centro-de-mando`). Si no está en marcha, la landing funciona igual
 y el BFF responde `502` a las rutas que delega.
 
@@ -35,8 +39,8 @@ y el BFF responde `502` a las rutas que delega.
 | Variable | Por defecto | Uso |
 |---|---|---|
 | `BFF_PORT` | `5174` | Puerto del BFF (y destino del proxy de Vite) |
-| `CDM_API_URL` | `http://127.0.0.1:8765` | Centro de mando al que se delega `/api/*` |
-| `VITE_APP_URL` | `/` | Destino del botón **Acceder** (se fija al compilar) |
+| `CDM_API_URL` | `http://127.0.0.1:8765` | Centro de mando al que se delegan `/app`, `/static/*` y `/api/*` |
+| `VITE_APP_URL` | `/app` | Destino de **Acceder** y de los accesos a cada cuadro (se fija al compilar) |
 
 ## Estructura
 

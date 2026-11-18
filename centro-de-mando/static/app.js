@@ -78,7 +78,8 @@
       if (!b) return;
       try {
         await api("/api/auth/login", { method: "POST", body: JSON.stringify({ email: b.dataset.email }) });
-        location.hash = "#/inicio";
+        // Conserva el cuadro pedido desde la landing (/app#/persona…); route() ya filtra los no autorizados.
+        if (!/^#\/\w/.test(location.hash)) location.hash = "#/inicio";
         boot();
       } catch (err) {
         const p = $("#login-error"); p.textContent = err.message; p.hidden = false;

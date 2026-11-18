@@ -3,6 +3,8 @@
 //  - POST /api/pilot-requests  → valida y guarda solicitudes de piloto (data/pilot-requests.jsonl)
 //  - GET  /api/health          → estado del BFF y del centro de mando
 //  - /api/*                    → se delega en el centro de mando FastAPI (CDM_API_URL)
+//  - /app y /static/*          → interfaz del centro de mando (/ y /static/* de FastAPI), en el mismo origen
+//                                que la landing para que su cookie de sesión (SameSite=strict) funcione
 //  - resto                     → sirve dist/ (SPA) en producción
 import { createServer } from 'node:http';
 import { readFile, appendFile, mkdir, stat } from 'node:fs/promises';
@@ -100,13 +102,13 @@ async function handleHealth(res) {
   sendJson(res, 200, { status: 'ok', cdm });
 }
 
-async function proxyToCdm(req, res) {
+async function proxyToCdm(req, res, upstreamPath = req.url) {
   const headers = { ...req.headers };
   delete headers.host;
   delete headers.connection;
   try {
     const hasBody = !['GET', 'HEAD'].includes(req.method ?? 'GET');
-    const upstream = await fetch(cdmUrl() + req.url, {
+    const upstream = await fetch(cdmUrl() + upstreamPath, {
       method: req.method,
       headers,
       body: hasBody ? await readBody(req) : undefined,
@@ -153,10 +155,11 @@ async function serveStatic(req, res) {
 
 export const server = createServer(async (req, res) => {
   try {
-    const path = new URL(req.url ?? '/', 'http://x').pathname;
+    const { pathname: path, search } = new URL(req.url ?? '/', 'http://x');
     if (path === '/api/pilot-requests' && req.method === 'POST') return await handlePilotRequest(req, res);
     if (path === '/api/health') return await handleHealth(res);
-    if (path.startsWith('/api/')) return await proxyToCdm(req, res);
+    if (path.startsWith('/api/') || path.startsWith('/static/')) return await proxyToCdm(req, res);
+    if (path === '/app' || path === '/app/') return await proxyToCdm(req, res, '/' + search);
     return await serveStatic(req, res);
   } catch (err) {
     console.error('[bff]', err);

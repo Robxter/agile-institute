@@ -1,3 +1,4 @@
+import { APP_URL } from '../api/client';
 import { dimensions, hero } from '../content/landing';
 import { Button } from './Button';
 import { Icon } from './Icon';
@@ -25,7 +26,7 @@ export function Hero({ onCta }: { onCta: () => void }) {
         <ul className={styles.list}>
           {dimensions.map((d) => (
             <li key={d.key}>
-              <a href={`#dim-${d.key}`} className={styles.item}>
+              <a href={`${APP_URL}#/${d.key}`} className={styles.item}>
                 <Icon name={d.icon} size={20} />
                 <span>{d.title}</span>
                 <Icon name="chevron" size={16} className={styles.chevron} />
