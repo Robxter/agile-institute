@@ -674,7 +674,7 @@
       : pulsePanel(d, ["bienestar"]);
     return [
       tile("competencias-a", 6, competencesPanel(d, a, { title: `${a} · ${labelA}`, color: "var(--s1)", cls: "blue-top" })),
-      tile("competencias-ia", 6, competencesPanel(d, "T05", { title: t05Title, color: "var(--s2)", ref: ref?.blocks, refLabel: ref ? `${ref.label} (n = ${ref.n})` : null, selfLabel: leader ? (d.individual ? "Mi IA" : "Líderes") : "T05", cls: "accent-top" })),
+      tile("competencias-ia", 6, competencesPanel(d, "T05", { title: t05Title, color: "var(--s2)", ref: ref?.blocks, refLabel: ref ? `${ref.label} (n = ${ref.n})` : null, selfLabel: leader ? (d.individual ? "Mi IA" : "Líderes") : "T05", cls: "ia-top" })),
       tile("puentes", 12, panel(leader ? "Liderar con IA · puentes de lectura" : "Agilidad aumentada · puentes de lectura", "Dos competencias relacionadas, cada una medida en su cuestionario · propuesta para conversar, no una relación validada", bridges, { table: table(["Competencia A", "Media", "Competencia T05", "Media", "Para conversar"], bridgeRows, [1, 3]) })),
       tile("fortalezas", 6, fort), tile("areas", 6, areas),
       tile("plan", 12, planPanel(d, leader ? "Mi plan · liderar con IA" : "Mi plan · agilidad aumentada")),

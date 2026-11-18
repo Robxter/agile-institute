@@ -11,7 +11,7 @@
   line-height: 1.25;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgb(31 163 155 / 0.28);
+  box-shadow: 0 6px 18px rgb(31 163 163 / 0.28);
   transition:
     background 0.2s var(--ease),
     transform 0.2s var(--ease),
@@ -20,7 +20,7 @@
 .button:hover {
   background: var(--teal-strong);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgb(31 163 155 / 0.34);
+  box-shadow: 0 10px 24px rgb(31 163 163 / 0.34);
 }
 .button:active {
   transform: translateY(0);

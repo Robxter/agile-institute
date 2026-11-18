@@ -7,13 +7,13 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   color: var(--text);
-  box-shadow: 0 30px 80px rgb(13 58 78 / 0.3);
+  box-shadow: 0 30px 80px rgb(11 58 74 / 0.3);
 }
 .dialog[open] {
   animation: pop 0.3s var(--ease);
 }
 .dialog::backdrop {
-  background: rgb(13 58 78 / 0.45);
+  background: rgb(11 58 74 / 0.45);
   backdrop-filter: blur(3px);
 }
 
@@ -76,7 +76,7 @@
   padding: 12px 14px;
   border: 1.5px solid var(--line);
   border-radius: var(--radius-sm);
-  background: #fbfdfe;
+  background: var(--light);
   transition:
     border-color 0.2s var(--ease),
     box-shadow 0.2s var(--ease);
@@ -89,7 +89,7 @@
 .field textarea:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgb(31 163 155 / 0.16);
+  box-shadow: 0 0 0 4px rgb(31 163 163 / 0.16);
 }
 .field [aria-invalid='true'] {
   border-color: #c2412d;

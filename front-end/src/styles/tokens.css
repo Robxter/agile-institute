@@ -1,18 +1,21 @@
-/* Tokens de diseño · Agile Institute */
+/* Tokens de diseño · paleta corporativa Agile Institute
+   La identidad se reconoce por el azul petróleo (Navy) y el turquesa (Teal). El azul tecnológico (Blue) identifica
+   contenidos de IA e información y nunca sustituye a la paleta histórica. El amarillo es solo un acento puntual. */
 :root {
   /* Marca */
-  --ink: #0d3a4e;          /* azul petróleo: titulares, texto fuerte */
+  --ink: #0b3a4a;          /* Agile Navy: logotipo, titulares, navegación, fondos de autoridad */
   --ink-soft: #2c5466;
-  --teal: #1fa39b;         /* acento principal, CTA */
-  --teal-strong: #17877f;
-  --blue: #1b7db3;         /* ilustraciones, IA */
-  --sky: #dcf0f6;          /* fondos suaves de tarjetas y secciones */
-  --sky-strong: #c9e8f2;
-  --sun: #f3c623;          /* subrayado, acentos de ilustración */
+  --teal: #1fa3a3;         /* Agile Teal: palabras destacadas, botones y llamadas a la acción */
+  --teal-strong: #188a8a;  /* hover de Teal */
+  --blue: #1685b8;         /* Agile Blue: enlaces, información, iconos secundarios e IA */
+  --sky: #d9f0f7;          /* Agile Sky: fondos de ilustración y superficies suaves */
+  --sky-strong: #c4e7f2;
+  --sun: #f5d328;          /* Human Yellow: acentos puntuales, nunca dominante */
+  --light: #f4f7f8;        /* Agile Light: fondos, tarjetas y descanso visual */
 
   /* Neutros */
   --text: #3d4f58;
-  --muted: #66767e;
+  --muted: #6f7377;        /* Human Grey: texto secundario y descriptores */
   --line: #e3edf1;
   --surface: #ffffff;
   --page: #ffffff;
@@ -30,8 +33,8 @@
   --radius-sm: 10px;
   --radius: 16px;
   --radius-lg: 24px;
-  --shadow: 0 1px 2px rgb(13 58 78 / 0.04), 0 8px 24px rgb(13 58 78 / 0.07);
-  --shadow-lg: 0 2px 4px rgb(13 58 78 / 0.05), 0 18px 48px rgb(13 58 78 / 0.12);
+  --shadow: 0 1px 2px rgb(11 58 74 / 0.04), 0 8px 24px rgb(11 58 74 / 0.07);
+  --shadow-lg: 0 2px 4px rgb(11 58 74 / 0.05), 0 18px 48px rgb(11 58 74 / 0.12);
   --container: 1200px;
   --gutter: clamp(16px, 4vw, 40px);
   --section-gap: clamp(48px, 6vw, 80px);

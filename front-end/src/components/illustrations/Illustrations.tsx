@@ -2,12 +2,12 @@
 import type { DimensionKey } from '../../content/landing';
 
 const C = {
-  ink: '#0d3a4e',
-  teal: '#1fa39b',
-  blue: '#1b7db3',
-  sun: '#f3c623',
+  ink: '#0b3a4a',
+  teal: '#1fa3a3',
+  blue: '#1685b8',
+  sun: '#f5d328',
   skin: '#ffffff',
-  sky: '#dcf0f6',
+  sky: '#d9f0f7',
   white: '#ffffff',
 };
 
@@ -91,7 +91,7 @@ function EquipoArt() {
       <Bars x={70} y={58} h={[14, 22, 30, 38]} w={9} colors={[C.blue, C.teal, C.ink, C.sun]} />
       <path d="M150 50l12-12 9 7 16-16" stroke={C.ink} strokeWidth="3.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       <Person x={60} y={92} shirt={C.blue} />
-      <Person x={130} y={88} s={1.05} long hair="#5a5a5a" shirt={C.ink} />
+      <Person x={130} y={88} s={1.05} long hair="#6f7377" shirt={C.ink} />
       <Person x={200} y={92} long shirt={C.ink} />
       <rect x="120" y="116" width="22" height="10" fill={C.white} stroke={C.ink} strokeWidth="2" />
       <rect x="12" y="124" width="236" height="8" fill={C.ink} />
