@@ -112,6 +112,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .accounts button:hover { border-color: var(--focus); background: var(--surface-2); }
 .accounts .role-chip { font-size: 12px; font-weight: 700; color: var(--navy); background: var(--surface-3); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 :root[data-theme="dark"] .accounts .role-chip { color: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .accounts .role-chip { color: var(--ink); } }
 
 /* Layout */
 .app { display: grid; grid-template-columns: 248px 1fr; min-height: 100vh; }
