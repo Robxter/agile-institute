@@ -1,6 +1,6 @@
 // BFF (backend-for-frontend) sin dependencias para la landing de Agile Institute.
 //
-//  - POST /api/pilot-requests  → valida y guarda solicitudes de piloto (data/pilot-requests.jsonl)
+//  - POST /api/pilot-requests  → valida, guarda (data/pilot-requests.jsonl) y avisa por correo vía Resend (mail.mjs)
 //  - GET  /api/health          → estado del BFF y del centro de mando
 //  - /api/*                    → se delega en el centro de mando FastAPI (CDM_API_URL)
 //  - /app y /static/*          → interfaz del centro de mando (/ y /static/* de FastAPI), en el mismo origen
@@ -11,6 +11,7 @@ import { readFile, appendFile, mkdir, stat } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { notifyPilotRequest } from './mail.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
@@ -93,6 +94,7 @@ async function handlePilotRequest(req, res) {
   await mkdir(DATA_DIR, { recursive: true });
   await appendFile(join(DATA_DIR, 'pilot-requests.jsonl'), JSON.stringify(record) + '\n', 'utf8');
   console.log(`[bff] solicitud de piloto ${record.id} · ${record.organization}`);
+  void notifyPilotRequest(record); // ya guardada: el correo no bloquea ni rompe la respuesta
   return sendJson(res, 201, { id: record.id });
 }
 

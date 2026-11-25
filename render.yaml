@@ -29,6 +29,13 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 22.11.0
+      # Correo (Resend) para solicitudes de piloto; sin clave el BFF no envía nada. Valores en el panel de Render.
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MAIL_FROM # remitente de un dominio verificado en Resend
+        sync: false
+      - key: MAIL_TEAM_TO # destinatarios internos, separados por comas
+        sync: false
       - key: CDM_API_URL # "host:puerto" del servicio privado; el BFF añade http://
         fromService:
           type: pserv

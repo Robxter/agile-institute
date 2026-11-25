@@ -48,6 +48,18 @@ repositorio y confirma. Los datos de la demo son efímeros (ver comentarios de `
 | `BFF_PORT` | `5174` | Puerto del BFF (y destino del proxy de Vite) |
 | `CDM_API_URL` | `http://127.0.0.1:8765` | Centro de mando al que se delegan `/app`, `/static/*` y `/api/*` |
 | `VITE_APP_URL` | `/app` | Destino de **Acceder** y de los accesos a cada cuadro (se fija al compilar) |
+| `RESEND_API_KEY` | — | Clave de Resend. Sin ella el BFF no envía correos (solo los registra) |
+| `MAIL_FROM` | — | Remitente de un dominio verificado en Resend |
+| `MAIL_TEAM_TO` | — | Destinatarios internos (comas) del aviso de cada solicitud de piloto |
+
+## Correo (Resend)
+
+`server/mail.mjs` llama a la API REST de Resend (`POST https://api.resend.com/emails`) con `fetch`, sin SDK. Por
+cada solicitud de piloto, tras guardarla, envía un **aviso al equipo** (`MAIL_TEAM_TO`, con `reply_to` al
+solicitante) y un **acuse al solicitante**. Cada envío lleva `Idempotency-Key` (`pilot-team-<id>`, `pilot-ack-<id>`),
+el texto del usuario se escapa en el HTML y un fallo de Resend solo se registra: nunca afecta a la respuesta ni a la
+solicitud guardada. Para nuevos correos, reutiliza `sendEmail({ to, subject, html, text, replyTo, idempotencyKey })`.
+En local el BFF no lee `.env`: exporta las variables o arranca con `node --env-file=.env server/index.mjs`.
 
 ## Estructura
 
