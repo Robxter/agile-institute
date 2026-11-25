@@ -17,7 +17,7 @@ export const nav = [
 ];
 
 export const hero = {
-  lead: 'Conoce la capacidad de tus personas y equipos, su experiencia en el trabajo y su preparación para colaborar con la IA, con evidencia y propósito.',
+  lead: 'Descubre las competencias de los lideres, los equipos y las personas de tu organizacion, su experiencia en el trabajo y el grado de madurez agil y del uso de la IA.',
   cta: 'Hablemos de un piloto en tu organización',
   dashboardTitle: 'Tu cuadro de mando',
   dashboardNote: 'Vistas de ejemplo con datos ilustrativos.',
@@ -40,11 +40,11 @@ export const assessment = {
     },
     {
       title: 'Ocho indicadores clave',
-      body: 'Una lectura ejecutiva. Cada competencia cuenta en un solo indicador: la IA es el indicador 6 y, además, se lee de forma transversal sin sumarse dos veces.',
+      body: 'Una lectura ejecutiva con indicadores de cada metacompetencia agil. La IA impacta transversalmente en cada una de las dimensiones.',
     },
     {
       title: 'Vínculo con la organización',
-      body: 'El eNPS se mide aparte y no modifica las puntuaciones del modelo.',
+      body: 'El eNPS y el flow indican el grado de compromiso y bienestar organizativo.',
     },
   ],
 };
@@ -60,14 +60,13 @@ export const process = {
 };
 
 export const roles = {
-  title: 'Una vista para cada rol',
+  title: 'Una vista para cada dimension',
   items: [
-    { title: 'Participante', body: 'Responde y consulta su informe cuando se publica' },
+    { title: 'Persona', body: 'Responde y consulta su informe cuando se publica' },
     { title: 'Líder', body: 'Su informe y los resultados agregados de sus equipos' },
-    { title: 'RRHH', body: 'Resultados agregados de toda la organización · solo lectura' },
-    { title: 'Administrador', body: 'Gestiona usuarios, equipos y mediciones' },
-    { title: 'Consultor', body: 'Acompaña a las organizaciones asignadas' },
-    { title: 'Visor', body: 'Consulta los informes compartidos' },
+    { title: 'Equipo', body: 'Resultados agregados de toda la organización' },
+    { title: 'Recursos Humanos', body: 'Acompaña a las organizaciones asignadas' },
+    { title: 'Organización', body: 'Consulta los informes compartidos' },
   ],
   indicators: [
     'Capacidad',

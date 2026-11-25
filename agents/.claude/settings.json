@@ -1,0 +1,14 @@
+{
+  "env": {
+    "CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH": "1",
+    "PYTHONUTF8": "1"
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./backend/.env)",
+      "Read(./pipeline/.env)"
+    ]
+  }
+}
