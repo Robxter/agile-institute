@@ -8,7 +8,7 @@
 | T-004 | Arquitectura de agentes desde `agents/` | lead-architect | done |
 | T-005 | Skill `frontend-optimize` y primera pasada | product-designer + frontend-engineer | done |
 | T-006 | Refrescar grafo graphify | main session | done |
-| T-007 | CI en GitHub Actions (front-end + centro de mando) | devops-engineer | todo |
-| T-008 | `docs/contracts/CONTRACTS.md` desde el código real | lead-architect | todo |
+| T-007 | CI en GitHub Actions (front-end + centro de mando) | devops-engineer | done (`.github/workflows/ci.yml`) |
+| T-008 | `docs/contracts/CONTRACTS.md` desde el código real | lead-architect | done |
 | T-009 | Persistencia en Render (disco + `CDM_DB_PATH`) para solicitudes y BD | devops-engineer + database-engineer | todo (class A: plan de pago) |
 | T-010 | Pasada QA completa (360 px / escritorio, claro / oscuro, Lighthouse) | qa-engineer | todo |
