@@ -5,8 +5,14 @@
       "input_tokens": 840762,
       "output_tokens": 0,
       "files": 51
+    },
+    {
+      "date": "2026-11-25T14:20:07.095697+00:00",
+      "input_tokens": 106556,
+      "output_tokens": 0,
+      "files": 75
     }
   ],
-  "total_input_tokens": 840762,
+  "total_input_tokens": 947318,
   "total_output_tokens": 0
 }
