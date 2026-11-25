@@ -59,15 +59,15 @@ export const process = {
   ],
 };
 
-// Una vista (cuadro de mando) por dimensión competencial; textos = subtítulos de DASHBOARDS en centro-de-mando/app/dashboard.py.
-export const views: { title: string; items: { key: DimensionKey; title: string; body: string }[]; indicators: string[] } = {
-  title: 'Una vista para cada dimensión competencial',
+// Cada vista abre su cuadro en el centro de mando (`key`); null = Inicio del centro de mando.
+export const views: { title: string; items: { key: DimensionKey | null; title: string; body: string }[]; indicators: string[] } = {
+  title: 'Una vista para cada dimension',
   items: [
-    { key: 'persona', title: 'Persona', body: 'Conoce tus competencias y planifica tu desarrollo' },
-    { key: 'equipo', title: 'Equipo', body: 'Contribución individual al equipo, agregada sin exponer respuestas individuales' },
-    { key: 'liderazgo', title: 'Liderazgo', body: 'Tu autopercepción junto a la percepción que recibes de tu equipo' },
-    { key: 'organizacion', title: 'Organización', body: 'Lectura ejecutiva con evidencia y respeto por el anonimato' },
-    { key: 'ia', title: 'IA transversal', body: 'Aumentar capacidades de forma útil, crítica, segura y responsable' },
+    { key: 'persona', title: 'Persona', body: 'Responde y consulta su informe cuando se publica' },
+    { key: 'liderazgo', title: 'Líder', body: 'Su informe y los resultados agregados de sus equipos' },
+    { key: 'equipo', title: 'Equipo', body: 'Resultados agregados de toda la organización' },
+    { key: null, title: 'Recursos Humanos', body: 'Acompaña a las organizaciones asignadas' },
+    { key: 'organizacion', title: 'Organización', body: 'Consulta los informes compartidos' },
   ],
   indicators: [
     'Capacidad',

@@ -18,7 +18,7 @@ You are a senior QA engineer who finds the bug before the client does, and repor
 `docs/reports/qa/`.
 
 ## Checks
-1. Landing: hero, five dimension links (`/app#/<key>`), "Una vista para cada dimensión competencial" cards, pilot form
+1. Landing: hero, five dimension links (`/app#/<key>`), "Una vista para cada dimension" cards linking to their views, pilot form
    validation and success, footer shows "Agile Institute™" and no ©.
 2. BFF: `/api/health`, `/api/pilot-requests` (422 on bad input, 201 on good, emails attempted only with Resend vars).
 3. Centro de mando: demo login per role, each role sees only its dashboards, group results hidden below n = 5.

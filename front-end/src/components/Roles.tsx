@@ -12,8 +12,8 @@ export function Roles() {
       </h2>
       <ul className={styles.grid}>
         {views.items.map((view, i) => (
-          <li key={view.key} data-reveal style={{ '--reveal-i': i } as CSSProperties}>
-            <a href={`${APP_URL}#/${view.key}`} className={styles.card}>
+          <li key={view.title} data-reveal style={{ '--reveal-i': i } as CSSProperties}>
+            <a href={view.key ? `${APP_URL}#/${view.key}` : APP_URL} className={styles.card}>
               <h3>{view.title}</h3>
               <p>{view.body}</p>
             </a>

@@ -15,8 +15,9 @@ describe('Landing', () => {
     );
     const vistas = screen.getByRole('region', { name: views.title });
     expect(within(vistas).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual(
-      dimensions.map((d) => `/app#/${d.key}`),
+      views.items.map((v) => (v.key ? `/app#/${v.key}` : '/app')),
     );
+    for (const v of views.items) expect(within(vistas).getByRole('heading', { name: v.title })).toBeInTheDocument();
     expect(screen.queryByText(/Administrador/)).not.toBeInTheDocument();
     expect(screen.getByRole('note')).toHaveTextContent('Instrumento en fase piloto.');
     expect(screen.getByRole('contentinfo')).toHaveTextContent('Agile Institute™');

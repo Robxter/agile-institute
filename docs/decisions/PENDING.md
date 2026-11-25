@@ -5,8 +5,7 @@
 `MAIL_TEAM_TO` must list who receives new pilot requests. Set both plus `RESEND_API_KEY` in the Render dashboard.
 Until then the BFF stores requests but sends no email.
 
-## PENDING-002 · "Recursos Humanos" on the landing
-The in-progress copy listed Persona, Líder, Equipo, Recursos Humanos, Organización under "Una vista para cada
-dimensión". Following CHANGES.md ("una vista por cada dimensión competencial"), the section now shows the five
-competency dimensions (Persona, Equipo, Liderazgo, Organización, IA transversal), each linking to its dashboard.
-RRHH is a role, not a dimension, so it was left out. Confirm, or say where RRHH should appear.
+## ~~PENDING-002 · "Recursos Humanos" on the landing~~ — resolved 2026-11-25
+Owner: the texts in `landing.ts` prevail, not the structure. The section keeps the owner's title and five cards
+verbatim (Persona, Líder, Equipo, Recursos Humanos, Organización); each card links to its dashboard
+(Líder → `#/liderazgo`), and Recursos Humanos, which has no dimension of its own, opens the centro de mando home (`/app`).
