@@ -10,7 +10,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
   margin: 0;
   padding: 0;
@@ -18,6 +18,10 @@
 }
 
 .card {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
   padding: 18px 18px 22px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -26,7 +30,8 @@
     border-color 0.2s var(--ease),
     box-shadow 0.2s var(--ease);
 }
-.card:hover {
+.card:hover,
+.card:focus-visible {
   border-color: var(--sky-strong);
   box-shadow: var(--shadow);
 }

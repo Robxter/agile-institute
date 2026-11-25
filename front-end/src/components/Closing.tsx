@@ -24,7 +24,7 @@ export function Closing({ onCta }: { onCta: () => void }) {
 
       <footer className={`container ${styles.footer}`}>
         <p>
-          {footer} · © {new Date().getFullYear()}
+          {footer} · {new Date().getFullYear()}
         </p>
       </footer>
     </>

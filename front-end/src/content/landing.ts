@@ -13,7 +13,7 @@ export interface Dimension {
 export const nav = [
   { href: '#que-evaluamos', label: 'Qué evaluamos' },
   { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#roles', label: 'Roles' },
+  { href: '#vistas', label: 'Vistas' },
 ];
 
 export const hero = {
@@ -59,14 +59,15 @@ export const process = {
   ],
 };
 
-export const roles = {
-  title: 'Una vista para cada dimension',
+// Una vista (cuadro de mando) por dimensión competencial; textos = subtítulos de DASHBOARDS en centro-de-mando/app/dashboard.py.
+export const views: { title: string; items: { key: DimensionKey; title: string; body: string }[]; indicators: string[] } = {
+  title: 'Una vista para cada dimensión competencial',
   items: [
-    { title: 'Persona', body: 'Responde y consulta su informe cuando se publica' },
-    { title: 'Líder', body: 'Su informe y los resultados agregados de sus equipos' },
-    { title: 'Equipo', body: 'Resultados agregados de toda la organización' },
-    { title: 'Recursos Humanos', body: 'Acompaña a las organizaciones asignadas' },
-    { title: 'Organización', body: 'Consulta los informes compartidos' },
+    { key: 'persona', title: 'Persona', body: 'Conoce tus competencias y planifica tu desarrollo' },
+    { key: 'equipo', title: 'Equipo', body: 'Contribución individual al equipo, agregada sin exponer respuestas individuales' },
+    { key: 'liderazgo', title: 'Liderazgo', body: 'Tu autopercepción junto a la percepción que recibes de tu equipo' },
+    { key: 'organizacion', title: 'Organización', body: 'Lectura ejecutiva con evidencia y respeto por el anonimato' },
+    { key: 'ia', title: 'IA transversal', body: 'Aumentar capacidades de forma útil, crítica, segura y responsable' },
   ],
   indicators: [
     'Capacidad',
@@ -88,7 +89,7 @@ export const pilotNotice = {
   body: 'Los resultados son descriptivos y sirven para el desarrollo; no se usan para selección, promoción ni sanción. La validación psicométrica está en curso.',
 };
 
-export const footer = 'Instrumento piloto · datos ilustrativos · pendiente de validación · Agile Institute';
+export const footer = 'Instrumento piloto · datos ilustrativos · pendiente de validación · Agile Institute™';
 
 export const organizationSizes = [
   { value: '<50', label: 'Menos de 50 personas' },

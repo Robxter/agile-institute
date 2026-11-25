@@ -1,24 +1,28 @@
 import type { CSSProperties } from 'react';
-import { roles } from '../content/landing';
+import { APP_URL } from '../api/client';
+import { views } from '../content/landing';
 import styles from './Roles.module.css';
 
+/** Una vista del centro de mando por cada dimensión competencial. */
 export function Roles() {
   return (
-    <section id="roles" className={`container ${styles.section}`} aria-labelledby="roles-title">
-      <h2 id="roles-title" className={styles.title}>
-        {roles.title}
+    <section id="vistas" className={`container ${styles.section}`} aria-labelledby="vistas-title">
+      <h2 id="vistas-title" className={styles.title}>
+        {views.title}
       </h2>
       <ul className={styles.grid}>
-        {roles.items.map((role, i) => (
-          <li key={role.title} className={styles.card} data-reveal style={{ '--reveal-i': i } as CSSProperties}>
-            <h3>{role.title}</h3>
-            <p>{role.body}</p>
+        {views.items.map((view, i) => (
+          <li key={view.key} data-reveal style={{ '--reveal-i': i } as CSSProperties}>
+            <a href={`${APP_URL}#/${view.key}`} className={styles.card}>
+              <h3>{view.title}</h3>
+              <p>{view.body}</p>
+            </a>
           </li>
         ))}
       </ul>
       <h3 className="visually-hidden">Indicadores del modelo</h3>
       <ul className={styles.chips}>
-        {roles.indicators.map((tag) => (
+        {views.indicators.map((tag) => (
           <li key={tag}>{tag}</li>
         ))}
       </ul>

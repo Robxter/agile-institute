@@ -1,20 +1,26 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
-import { dimensions, roles } from '../content/landing';
+import { dimensions, views } from '../content/landing';
 
 describe('Landing', () => {
   afterEach(() => vi.restoreAllMocks());
 
-  it('muestra el titular, las cinco dimensiones y los seis roles', () => {
+  it('muestra el titular, las cinco dimensiones y una vista por dimensión', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/responsable de la\s*IA/);
     const panel = screen.getByRole('complementary', { name: 'Tu cuadro de mando' });
     expect(within(panel).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual(
       dimensions.map((d) => `/app#/${d.key}`),
     );
-    for (const role of roles.items) expect(screen.getByRole('heading', { name: role.title })).toBeInTheDocument();
+    const vistas = screen.getByRole('region', { name: views.title });
+    expect(within(vistas).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual(
+      dimensions.map((d) => `/app#/${d.key}`),
+    );
+    expect(screen.queryByText(/Administrador/)).not.toBeInTheDocument();
     expect(screen.getByRole('note')).toHaveTextContent('Instrumento en fase piloto.');
+    expect(screen.getByRole('contentinfo')).toHaveTextContent('Agile Institute™');
+    expect(document.body.textContent).not.toContain('©');
   });
 
   it('valida el formulario de piloto antes de enviarlo', async () => {
